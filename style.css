@@ -1,5 +1,4 @@
-/* styles.css */
-
+/* Resetting basic styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,8 +7,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(120deg, #f3f4f6, #e2e8f0);
-    color: #333;
+    background-color: #121212;  /* Dark background */
+    color: #fff;  /* White text color for contrast */
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -20,21 +19,25 @@ body {
     margin: 0 auto;
 }
 
+/* Header Styling */
 header {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #FFD700, #C0C0C0);
+    background: linear-gradient(45deg, #2e3b4e, #3b4f63);  /* Dark blue gradient background */
     color: #fff;
     text-align: center;
+    padding: 2rem;
 }
 
 header h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    animation: fadeIn 2s ease;
+    animation: fadeIn 2s ease, text-line 1s 1s forwards;
+    display: inline-block;
+    position: relative;
 }
 
 header p {
@@ -43,6 +46,7 @@ header p {
     animation: fadeIn 2.5s ease;
 }
 
+/* Main Content Styling */
 main {
     margin: 2rem 0;
 }
@@ -51,9 +55,10 @@ h2 {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #444;
+    color: #3b4f63;  /* Dark blue color for headings */
 }
 
+/* Internship List Grid */
 .internship-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -63,27 +68,27 @@ h2 {
 }
 
 .internship {
-    background: white;
+    background-color: #1f1f1f;  /* Dark grey background for cards */
     border-radius: 10px;
     padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .internship:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .internship h3 {
     font-size: 1.4rem;
-    color: #FFD700;
+    color: #3b4f63;  /* Dark blue for internship title */
     margin-bottom: 1rem;
 }
 
 .internship p {
     font-size: 1rem;
-    color: #555;
+    color: #bbb;  /* Light grey text for description */
 }
 
 .placeholder {
@@ -91,8 +96,9 @@ h2 {
     font-style: italic;
 }
 
+/* Footer Styling */
 footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
@@ -124,7 +130,27 @@ footer p {
     }
 }
 
-/* Responsive Design */
+@keyframes text-line {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
@@ -137,4 +163,80 @@ footer p {
     .internship {
         padding: 1rem;
     }
+
+    .internship-list {
+        padding: 0.5rem;
+    }
+}
+
+/* Learn More Button (Anchor Tag) Styling */
+.btn {
+    background-color: #3b4f63;  /* Dark blue background */
+    color: #fff;  /* White text color */
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border-radius: 25px;  /* Rounded corners */
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;  /* Remove underline */
+    display: inline-block;
+    transition: all 0.3s ease;  /* Smooth transition for hover, focus */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);  /* Initial shadow */
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #2e3b4e;  /* Lighter blue on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);  /* Increased shadow on hover */
+    transform: translateY(-5px);  /* Button lifts up slightly on hover */
+    animation: button-hover 0.3s ease forwards;  /* Animation when hovered */
+}
+
+.btn:active {
+    background-color: #243043;  /* Even darker blue on click */
+    transform: translateY(2px);  /* Button moves down when pressed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Reduce shadow when clicked */
+}
+
+/* Hover Animation Effect */
+@keyframes button-hover {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);  /* Slight increase in size */
+    }
+    100% {
+        transform: scale(1);  /* Return to normal size */
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}
+
+/* Character hover effect */
+.hover-effect span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-right: 2px; /* Add space between characters */
+}
+
+.hover-effect span:hover {
+    color: #6a8d9d;  /* Light blue for hover effect */
+    transform: scale(1.2);
+}
+
+.hover-effect span::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    transition: transform 0.3s ease;
 }
