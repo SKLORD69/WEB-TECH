@@ -34,3 +34,9 @@ function revealOnScroll() {
 }
 
 window.addEventListener('scroll', revealOnScroll);
+
+document.querySelectorAll('.hover-effect').forEach((element) => {
+    let text = element.innerText;
+    let spanText = text.split('').map((char) => `<span data-text="${char}">${char}</span>`).join('');
+    element.innerHTML = spanText;
+});
