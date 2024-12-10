@@ -6,169 +6,169 @@
     <title>Frontend Development Internship - CodeX Hub</title>
     <style>
         /* General Reset */
-        body, h1, h2, h3, p, ul, li, a {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-            color: #333;
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
 
-        /* Header */
-        header {
-            background: linear-gradient(90deg, #2c3e50, #34495e);
-            color: #fff;
-            padding: 20px 10px;
-            text-align: center;
-            border-bottom: 3px solid #16a085;
-        }
+/* Header */
+header {
+    background: linear-gradient(90deg, #2c3e50, #34495e);
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    border-bottom: 3px solid #16a085;
+}
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
 
-        header p {
-            font-size: 1.2rem;
-            color: #d1d1d1;
-        }
+header p {
+    font-size: 1.2rem;
+    color: #d1d1d1;
+}
 
-        /* Main Section */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
+/* Main Section */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
 
-        .flex {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
-        .bg-gray-100 {
-            background-color: #f7f7f7;
-        }
+.bg-gray-100 {
+    background-color: #f7f7f7;
+}
 
-        .shadow-lg {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
+.shadow-lg {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-        .rounded-lg {
-            border-radius: 12px;
-        }
+.rounded-lg {
+    border-radius: 12px;
+}
 
-        p {
-            margin-bottom: 10px;
-        }
+p {
+    margin-bottom: 10px;
+}
 
-        h2 {
-            color: #2c3e50;
-        }
+h2 {
+    color: #2c3e50;
+}
 
-        h3 {
-            margin-top: 20px;
-            color: #34495e;
-        }
+h3 {
+    margin-top: 20px;
+    color: #34495e;
+}
 
-        ul {
-            list-style: none;
-            margin-top: 10px;
-        }
+ul {
+    list-style: none;
+    margin-top: 10px;
+}
 
-        ul li {
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
+ul li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
 
-        /* Profile Image */
-        img {
-            border-radius: 50%;
-            max-width: 200px;
-            height: auto;
-            border: 4px solid #16a085;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            display: block;
-        }
+/* Profile Image */
+img {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+    border: 4px solid #16a085;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        /* Links */
-        a {
-            text-decoration: none;
-            color: #16a085;
-            font-weight: bold;
-        }
+/* Links */
+a {
+    text-decoration: none;
+    color: #16a085;
+    font-weight: bold;
+}
 
-        a:hover {
-            color: #1abc9c;
-            text-decoration: underline;
-        }
+a:hover {
+    color: #1abc9c;
+    text-decoration: underline;
+}
 
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            border-top: 3px solid #16a085;
-        }
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    border-top: 3px solid #16a085;
+}
 
-        footer p {
-            font-size: 0.9rem;
-            color: #d1d1d1;
-        }
+footer p {
+    font-size: 0.9rem;
+    color: #d1d1d1;
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .flex {
-                flex-direction: column;
-            }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
 
-            header h1 {
-                font-size: 2rem;
-            }
+    header h1 {
+        font-size: 2rem;
+    }
 
-            header p {
-                font-size: 1rem;
-            }
-        }
+    header p {
+        font-size: 1rem;
+    }
+}
     </style>
 </head>
 <body>
-    <header>
-        <h1>Frontend Development Internship</h1>
-        <p>Join our team and create stunning, interactive websites!</p>
+    <header class="bg-gradient-to-r from-gray-800 to-gray-600 text-white py-6 text-center">
+        <h1 class="text-4xl font-bold">Web Development Intern</h1>
+        <p class="text-lg mt-2">Learn more about this talented individual</p>
     </header>
 
-    <main class="container">
-        <img src="frontend-development.jpg" alt="Frontend Development">
-        <section class="bg-gray-100 shadow-lg rounded-lg p-4">
-            <h2>About the Internship</h2>
-            <p>Learn how to build dynamic and responsive websites using modern technologies like HTML, CSS, JavaScript, and frameworks like React or Angular.</p>
-        </section>
-        <section class="bg-gray-100 shadow-lg rounded-lg p-4">
-            <h3>What You'll Learn:</h3>
-            <ul>
-                <li>Creating responsive designs with CSS and Bootstrap</li>
-                <li>Implementing interactive features using JavaScript</li>
-                <li>Using APIs to fetch and display data</li>
-                <li>Best practices for frontend performance and SEO</li>
-            </ul>
-        </section>
-        <section class="bg-gray-100 shadow-lg rounded-lg p-4">
-            <h3>Contact Details:</h3>
-            <p>Email: internships@codexhub.com</p>
-            <p>Phone: +91-9876543210</p>
-        </section>
+    <main class="container mx-auto my-10 px-4">
+        <div class="flex flex-wrap bg-gray-100 shadow-lg rounded-lg p-6">
+            <div class="w-full md:w-1/3 flex justify-center items-center">
+                <img src="web-dev-intern.jpg" alt="Web Development Intern" class="rounded-full shadow-lg w-64 h-64">
+            </div>
+            <div class="w-full md:w-2/3 px-6">
+                <h2 class="text-3xl font-bold mb-4">John Doe</h2>
+                <p class="text-gray-700 mb-4">
+                    John is an aspiring web developer who has expertise in building responsive and dynamic websites. With experience in HTML, CSS, and JavaScript, he is passionate about creating seamless user experiences.
+                </p>
+                <p class="text-gray-700 mb-4">
+                    John has successfully developed projects like landing pages, portfolio websites, and small e-commerce platforms. He is also well-versed in frameworks like Bootstrap and Tailwind CSS.
+                </p>
+                <h3 class="text-2xl font-bold mt-6 mb-4">Contact Details</h3>
+                <ul class="text-gray-700">
+                    <li><strong>Email:</strong> john.doe@example.com</li>
+                    <li><strong>Phone:</strong> +123 456 7890</li>
+                    <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe" target="_blank" class="text-blue-600 hover:underline">linkedin.com/in/johndoe</a></li>
+                    <li><strong>Portfolio:</strong> <a href="https://johndoeportfolio.com" target="_blank" class="text-blue-600 hover:underline">johndoeportfolio.com</a></li>
+                </ul>
+            </div>
+        </div>
     </main>
 
-    <footer>
+    <footer class="bg-gray-800 text-white py-4 text-center">
         <p>© 2024 CodeX Hub. All Rights Reserved.</p>
     </footer>
 </body>
