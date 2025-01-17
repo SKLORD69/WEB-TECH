@@ -1,242 +1,915 @@
-/* Resetting basic styles */
-* {
+/* CSS Reset and Custom Properties */
+:root {
+    --primary-color: #3b4f63;
+    --secondary-color: #6a8d9d;
+    --dark-bg: #121212;
+    --card-bg: #1f1f1f;
+    --text-primary: #fff;
+    --text-secondary: #bbb;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Modern CSS Reset */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Improved Typography */
+@font-face {
+    font-family: 'Roboto';
+    font-display: swap;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+}
+
+/* Smooth Scrolling and Selection Styling */
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: var(--primary-color);
+    color: var(--text-primary);
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;  /* Dark background */
-    color: #fff;  /* White text color for contrast */
+    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Enhanced Container with Responsive Padding */
 .container {
-    width: 85%;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: min(85%, 1200px);
+    margin-inline: auto;
+    padding: clamp(1rem, 5vw, 2rem);
 }
 
-/* Header Styling */
+/* Advanced Header Styling */
 header {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #2e3b4e, #3b4f63);  /* Dark blue gradient background */
-    color: #fff;
-    text-align: center;
-    padding: 2rem;
-}
-
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: fadeIn 2s ease, text-line 1s 1s forwards;
-    display: inline-block;
+    background: 
+        linear-gradient(
+            rgba(46, 59, 78, 0.9),
+            rgba(59, 79, 99, 0.9)
+        ),
+        url('https://picsum.photos/1920/1080') center/cover no-repeat fixed;
     position: relative;
+    overflow: hidden;
 }
 
-header p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    animation: fadeIn 2.5s ease;
-}
-
-/* Main Content Styling */
-main {
-    margin: 2rem 0;
-}
-
-h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #3b4f63;  /* Dark blue color for headings */
-}
-
-/* Internship List Grid */
-.internship-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-    animation: fadeInUp 1.5s ease;
-}
-
-.internship {
-    background-color: #1f1f1f;  /* Dark grey background for cards */
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.internship:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.internship h3 {
-    font-size: 1.4rem;
-    color: #3b4f63;  /* Dark blue for internship title */
-    margin-bottom: 1rem;
-}
-
-.internship p {
-    font-size: 1rem;
-    color: #bbb;  /* Light grey text for description */
-}
-
-.placeholder {
-    color: #888;
-    font-style: italic;
-}
-
-/* Footer Styling */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-}
-
-footer p {
-    font-size: 0.9rem;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes text-line {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    .internship {
-        padding: 1rem;
-    }
-
-    .internship-list {
-        padding: 0.5rem;
-    }
-}
-
-/* Learn More Button (Anchor Tag) Styling */
-.btn {
-    background-color: #3b4f63;  /* Dark blue background */
-    color: #fff;  /* White text color */
-    font-size: 1.1rem;
-    padding: 12px 30px;
-    border-radius: 25px;  /* Rounded corners */
-    text-transform: uppercase;
-    font-weight: bold;
-    text-decoration: none;  /* Remove underline */
-    display: inline-block;
-    transition: all 0.3s ease;  /* Smooth transition for hover, focus */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);  /* Initial shadow */
-    text-align: center;
-}
-
-.btn:hover {
-    background-color: #2e3b4e;  /* Lighter blue on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);  /* Increased shadow on hover */
-    transform: translateY(-5px);  /* Button lifts up slightly on hover */
-    animation: button-hover 0.3s ease forwards;  /* Animation when hovered */
-}
-
-.btn:active {
-    background-color: #243043;  /* Even darker blue on click */
-    transform: translateY(2px);  /* Button moves down when pressed */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Reduce shadow when clicked */
-}
-
-/* Hover Animation Effect */
-@keyframes button-hover {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);  /* Slight increase in size */
-    }
-    100% {
-        transform: scale(1);  /* Return to normal size */
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .btn {
-        font-size: 1rem;
-        padding: 10px 25px;
-    }
-}
-
-/* Character hover effect */
-.hover-effect span {
-    position: relative;
-    display: inline-block;
-    transition: transform 0.3s ease, color 0.3s ease;
-    margin-right: 2px; /* Add space between characters */
-}
-
-.hover-effect span:hover {
-    color: #6a8d9d;  /* Light blue for hover effect */
-    transform: scale(1.2);
-}
-
-.hover-effect span::after {
-    content: attr(data-text);
+/* Parallax Effect */
+header::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    transform: scale(1);
-    transition: transform 0.3s ease;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    transform: translateZ(0);
+    will-change: transform;
+    z-index: -1;
+}
+
+/* Enhanced Typography with Modern Animation */
+header h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--text-primary), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientText 6s infinite;
+    text-shadow: var(--shadow-sm);
+}
+
+/* Advanced Card Styling */
+.internship {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.internship::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+    transform: translateX(-100%);
+    transition: var(--transition-smooth);
+}
+
+.internship:hover::before {
+    transform: translateX(100%);
+}
+
+/* Enhanced Image Handling */
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 16/9;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+    transform: scale(1.01);
+    filter: brightness(0.9);
+}
+
+.img-wrapper:hover img {
+    transform: scale(1.05);
+    filter: brightness(1);
+}
+
+/* Advanced Button Styling */
+.btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-primary);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    padding: 0.75em 2em;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+/* Advanced Animations */
+@keyframes gradientText {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    position: fixed;
+    inset: 0;
+    background: var(--dark-bg);
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+    animation: fadeOut 1s 2s forwards;
+}
+
+.loading::after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--text-secondary);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* Advanced Media Queries */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .internship-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (hover: hover) {
+    .internship:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+/* Print Styles */
+@media print {
+    header {
+        height: auto;
+        background: none;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: light) {
+    :root {
+        --dark-bg: #f5f5f5;
+        --card-bg: #ffffff;
+        --text-primary: #333;
+        --text-secondary: #666;
+    }
+}
+
+/* Enhanced CSS Variables */
+:root {
+    --primary-color: #3b4f63;
+    --secondary-color: #6a8d9d;
+    --dark-bg: #121212;
+    --card-bg: #1f1f1f;
+    --text-primary: #fff;
+    --text-secondary: #bbb;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Enhanced Header Styles */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(rgba(46, 59, 78, 0.9), rgba(59, 79, 99, 0.9)),
+                url('https://picsum.photos/1920/1080') center/cover no-repeat fixed;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background: inherit;
+    transform: translateZ(0);
+    will-change: transform;
+    z-index: -1;
+}
+
+/* Enhanced Container */
+.container {
+    width: min(85%, 1200px);
+    margin-inline: auto;
+    padding: clamp(1rem, 5vw, 2rem);
+}
+
+/* Enhanced Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    background: linear-gradient(45deg, var(--text-primary), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientText 6s infinite;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+    margin: 2rem 0;
+}
+
+h3 {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+/* Enhanced Internship Grid */
+.internship-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Enhanced Internship Cards */
+.internship {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: clamp(1rem, 3vw, 2rem);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.internship::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.internship:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.internship:hover::before {
+    transform: translateX(100%);
+}
+
+/* Enhanced Button Styles */
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.75em 2em;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    z-index: 1;
+    transition: var(--transition-smooth);
+    margin-top: 1rem;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Footer Styles */
+footer {
+    background: var(--card-bg);
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Hover Effect Class */
+.hover-effect {
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.hover-effect:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+@keyframes gradientText {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Scroll Reveal Animation Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .internship-list {
+        grid-template-columns: 1fr;
+    }
+
+    .internship:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+
+    header {
+        background-attachment: scroll;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: light) {
+    :root {
+        --dark-bg: #f5f5f5;
+        --card-bg: #ffffff;
+        --text-primary: #333;
+        --text-secondary: #666;
+    }
+}
+
+/* Print Styles */
+@media print {
+    header {
+        height: auto;
+        background: none;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    .internship {
+        break-inside: avoid;
+        border: 1px solid #000;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* Updated Color Theme Variables */
+:root {
+    /* Primary Colors */
+    --primary-color: #4F46E5;    /* Rich Indigo */
+    --primary-light: #818CF8;    /* Lighter Indigo */
+    --primary-dark: #3730A3;     /* Darker Indigo */
+    
+    /* Secondary Colors */
+    --secondary-color: #10B981;  /* Emerald */
+    --secondary-light: #34D399;  /* Light Emerald */
+    --secondary-dark: #059669;   /* Dark Emerald */
+    
+    /* Accent Colors */
+    --accent-color: #F59E0B;     /* Amber */
+    --accent-light: #FBBF24;     /* Light Amber */
+    --accent-dark: #D97706;      /* Dark Amber */
+    
+    /* Background Colors */
+    --dark-bg: #111827;          /* Dark Blue Gray */
+    --card-bg: #1F2937;          /* Lighter Blue Gray */
+    --hover-bg: #374151;         /* Medium Blue Gray */
+    
+    /* Text Colors */
+    --text-primary: #F9FAFB;     /* Almost White */
+    --text-secondary: #E5E7EB;   /* Light Gray */
+    --text-muted: #9CA3AF;       /* Medium Gray */
+    
+    /* Gradient Colors */
+    --gradient-start: #4F46E5;   /* Indigo */
+    --gradient-mid: #10B981;     /* Emerald */
+    --gradient-end: #F59E0B;     /* Amber */
+    
+    /* Shadow Colors */
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --shadow-color-light: rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Header Styles with New Colors */
+header {
+    background: linear-gradient(
+        rgba(17, 24, 39, 0.9),
+        rgba(31, 41, 55, 0.9)
+    ),
+    url('https://picsum.photos/1920/1080') center/cover no-repeat fixed;
+}
+
+/* Enhanced Typography Colors */
+h1 {
+    background: linear-gradient(
+        45deg,
+        var(--primary-light),
+        var(--secondary-light),
+        var(--accent-light)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px var(--shadow-color);
+}
+
+h2 {
+    color: var(--text-primary);
+    text-shadow: 0 2px 4px var(--shadow-color);
+}
+
+h3 {
+    color: var(--primary-light);
+    transition: color 0.3s ease;
+}
+
+/* Enhanced Internship Cards with New Color Scheme */
+.internship {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.internship:hover {
+    background: var(--hover-bg);
+    border-color: var(--primary-light);
+    box-shadow: 0 8px 12px var(--shadow-color);
+}
+
+.internship h3:hover {
+    color: var(--secondary-light);
+}
+
+.internship p {
+    color: var(--text-secondary);
+}
+
+/* Enhanced Button Styles with New Colors */
+.btn {
+    background: linear-gradient(
+        45deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    color: var(--text-primary);
+    border: none;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.btn:hover {
+    background: linear-gradient(
+        45deg,
+        var(--primary-light),
+        var(--secondary-light)
+    );
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.btn::before {
+    background: linear-gradient(
+        45deg,
+        var(--secondary-color),
+        var(--primary-color)
+    );
+}
+
+/* Custom Scrollbar Colors */
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
+
+/* Footer with New Colors */
+footer {
+    background: var(--card-bg);
+    border-top: 1px solid var(--hover-bg);
+    color: var(--text-muted);
+}
+
+/* Dark Mode Support with New Colors */
+@media (prefers-color-scheme: light) {
+    :root {
+        --dark-bg: #F9FAFB;
+        --card-bg: #FFFFFF;
+        --hover-bg: #F3F4F6;
+        --text-primary: #111827;
+        --text-secondary: #374151;
+        --text-muted: #6B7280;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --shadow-color-light: rgba(0, 0, 0, 0.05);
+    }
+    
+    .internship {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-shadow: none;
+    }
+}
+
+/* Animation for Gradient Text */
+@keyframes gradientText {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Hover Effects with New Colors */
+.hover-effect:hover {
+    color: var(--accent-light);
+    text-shadow: 0 0 10px var(--shadow-color);
+}
+
+/* Loading Animation Colors */
+.loading::after {
+    border-color: var(--text-secondary);
+    border-top-color: var(--primary-color);
+}
+
+/* Animation Support Styles */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, 
+        var(--primary-color), 
+        var(--secondary-color)
+    );
+    transform: scaleX(calc(var(--scroll, 0) / 100));
+    transform-origin: left;
+    z-index: 1000;
+}
+
+/* Particle Animation */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatParticle 5s infinite linear;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-100px) scale(1.5);
+    }
+    100% {
+        transform: translateY(-200px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Card Hover Effects */
+.internship {
+    --mouse-x: 0;
+    --mouse-y: 0;
+    position: relative;
+    isolation: isolate;
+}
+
+.internship::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.1),
+        transparent 150px
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+.internship:hover::before {
+    opacity: 1;
+}
+
+/* Scroll Reveal Animations */
+.internship {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.internship.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Text Animation */
+@keyframes typeWriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+header h1 {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--primary-color);
+    animation: typeWriter 4s steps(40) 1s forwards,
+               blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary-color); }
+}
+
+/* Hover Effect Enhancement */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn:hover::after {
+    transform: translateX(100%);
+}
+
+/* Loading Animation */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--text-secondary);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Animation Adjustments */
+@media (prefers-reduced-motion: reduce) {
+    .particle {
+        display: none;
+    }
+    
+    .internship {
+        transition: none;
+    }
+    
+    header h1 {
+        animation: none;
+        border-right: none;
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .particle {
+        display: none;
+    }
+    
+    .internship::before {
+        display: none;
+    }
 }
