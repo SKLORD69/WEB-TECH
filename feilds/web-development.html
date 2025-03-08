@@ -249,6 +249,144 @@
             font-size: 0.9rem;
             margin: 0;
         }
+        .back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    background-color: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+    text-decoration: none;
+    border: 2px solid #00ffff;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    z-index: 1;
+    letter-spacing: 1px;
+}
+
+.back-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+/* Car headlight beams effect */
+.back-button:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    background: rgba(0, 255, 255, 0.8);
+    left: -30px;
+    top: calc(50% - 5px);
+    filter: blur(10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.back-button i {
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+/* Car wheel rotation effect */
+.back-button i:before {
+    display: inline-block;
+    transition: transform 1s linear;
+}
+
+.back-button:hover {
+    background-color: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.4);
+    transform: translateY(-2px) translateX(5px);
+    animation: hover-shake 0.5s ease;
+}
+
+.back-button:hover:before {
+    left: 100%;
+    animation: repeat-scan 2s infinite 0.5s;
+}
+
+.back-button:hover:after {
+    opacity: 1;
+    left: -10px;
+    animation: headlights 1.5s infinite;
+}
+
+.back-button:hover i {
+    transform: translateX(-5px);
+    animation: car-move 0.7s infinite alternate;
+}
+
+.back-button:hover i:before {
+    animation: spin 1s linear infinite;
+}
+
+/* Button hover shake animation like a car engine revving */
+@keyframes hover-shake {
+    0%, 100% { transform: translateY(-2px) translateX(5px); }
+    25% { transform: translateY(-3px) translateX(4px); }
+    50% { transform: translateY(-2px) translateX(6px); }
+    75% { transform: translateY(-3px) translateX(5px); }
+}
+
+/* Scanning animation */
+@keyframes repeat-scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Car movement animation */
+@keyframes car-move {
+    0% { transform: translateX(-5px) translateY(0); }
+    50% { transform: translateX(-3px) translateY(-1px); }
+    100% { transform: translateX(-5px) translateY(0); }
+}
+
+/* Wheel spin animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Headlights beam animation */
+@keyframes headlights {
+    0% { filter: blur(10px); width: 30px; }
+    50% { filter: blur(15px); width: 50px; }
+    100% { filter: blur(10px); width: 30px; }
+}
+
+/* Button text glow effect */
+.back-button {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.back-button:hover {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 0.7);
+    animation: text-flicker 2s infinite;
+}
+
+/* Text flicker animation */
+@keyframes text-flicker {
+    0%, 100% { text-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 0.7); }
+    10% { text-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 25px rgba(0, 255, 255, 0.9); }
+    20% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 15px rgba(0, 255, 255, 0.5); }
+    30% { text-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 25px rgba(0, 255, 255, 0.9); }
+    40% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.7); }
+}
     </style>
 </head>
 
@@ -256,8 +394,10 @@
     <canvas id="background-canvas"></canvas>
 
     <header class="text-center">
+        <a href="https://sklord69.github.io/WEB-TECH/" class="back-button">
+        <i class="fas fa-home"></i> Back to Home
+    </a>
         <h1>WEB DEVELOPMENT INTERNS 2025</h1>
-
     </header>
 
     <main>
@@ -265,10 +405,10 @@
             <!-- Intern 1 -->
             <div class="intern-card">
                 <div class="intern-header">
-                    <img src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png" alt="John Doe" class="intern-img">
+                    <img src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png" alt="Ethan Rivera" class="intern-img">
                 </div>
                 <div class="intern-body">
-                    <h2 class="intern-name">JOHN DOE</h2>
+                    <h2 class="intern-name">ETHAN RIVERA</h2>
                     <p class="intern-desc">
                         Front-end specialist with expertise in responsive design and interactive UI components. Creates
                         seamless user experiences through modern web technologies.
@@ -290,10 +430,10 @@
             <!-- Intern 2 -->
             <div class="intern-card">
                 <div class="intern-header">
-                    <img src="https://img.freepik.com/premium-vector/young-gamer-girl-avatar-streaming-with-colored-hair-gaming-headset_704771-3431.jpg" alt="Jane Smith" class="intern-img">
+                    <img src="https://img.freepik.com/premium-vector/young-gamer-girl-avatar-streaming-with-colored-hair-gaming-headset_704771-3431.jpg" alt="Sophie Chen" class="intern-img">
                 </div>
                 <div class="intern-body">
-                    <h2 class="intern-name">JANE SMITH</h2>
+                    <h2 class="intern-name">SOPHIE CHEN</h2>
                     <p class="intern-desc">
                         Full-stack developer with a focus on data visualization and backend architecture. Passionate
                         about creating efficient, scalable web applications.
@@ -315,10 +455,10 @@
             <!-- Intern 3 -->
             <div class="intern-card">
                 <div class="intern-header">
-                    <img src="https://thumbs.dreamstime.com/b/man-icon-gentleman-logo-man-beard-mustache-groom-businessman-vector-illustration-man-icon-gentleman-logo-man-124766901.jpg" alt="Alex Johnson" class="intern-img">
+                    <img src="https://thumbs.dreamstime.com/b/man-icon-gentleman-logo-man-beard-mustache-groom-businessman-vector-illustration-man-icon-gentleman-logo-man-124766901.jpg" alt="Malik Patel" class="intern-img">
                 </div>
                 <div class="intern-body">
-                    <h2 class="intern-name">ALEX JOHNSON</h2>
+                    <h2 class="intern-name">MALIK PATEL</h2>
                     <p class="intern-desc">
                         UI/UX designer and developer specializing in accessible web design. Creates inclusive
                         experiences while maintaining visual appeal and functionality.
@@ -340,10 +480,10 @@
             <!-- Intern 4 -->
             <div class="intern-card">
                 <div class="intern-header">
-                    <img src="https://img.freepik.com/premium-vector/young-gamer-girl-avatar-streaming-with-colored-hair-gaming-headset_704771-3515.jpg" alt="Maria Garcia" class="intern-img">
+                    <img src="https://img.freepik.com/premium-vector/young-gamer-girl-avatar-streaming-with-colored-hair-gaming-headset_704771-3515.jpg" alt="Zoe Nguyen" class="intern-img">
                 </div>
                 <div class="intern-body">
-                    <h2 class="intern-name">MARIA GARCIA</h2>
+                    <h2 class="intern-name">ZOE NGUYEN</h2>
                     <p class="intern-desc">
                         Mobile-first web developer with expertise in progressive web apps. Creates performant
                         applications that work seamlessly across all devices.
