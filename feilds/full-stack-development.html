@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Interns - Profiles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #9d00ff;
+            --neon-pink: #ff00e6;
+            --dark-bg: #0a0a1a;
+            --cyber-grid: #1a1a3a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--neon-purple), var(--dark-bg));
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--neon-blue);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(0, 243, 255, 0.1) 50px,
+                    rgba(0, 243, 255, 0.1) 51px);
+            z-index: 0;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 0 10px var(--neon-blue);
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 0.5rem;
+            text-shadow: 0 0 5px var(--neon-pink);
+            position: relative;
+            z-index: 1;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .intern-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .intern-card {
+            background: rgba(26, 26, 58, 0.8);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .intern-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
+        }
+
+        .intern-header {
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intern-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.05) 10px,
+                    rgba(255, 255, 255, 0.05) 20px);
+        }
+
+        .intern-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 0 20px rgba(157, 0, 255, 0.7);
+            position: relative;
+            z-index: 1;
+        }
+
+        .intern-body {
+            padding: 1.5rem;
+        }
+
+        .intern-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin: 0 0 1rem;
+            text-align: center;
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px rgba(0, 243, 255, 0.7);
+        }
+
+        .intern-desc {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .intern-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(157, 0, 255, 0.2);
+            border: 1px solid var(--neon-purple);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: white;
+        }
+
+        .intern-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .cyber-button {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            color: white;
+            padding: 0.7rem 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+            font-size: 0.85rem;
+            text-align: center;
+            flex: 1;
+            margin: 0 0.5rem;
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 230, 0.4), transparent);
+            transition: all 0.4s;
+            z-index: -1;
+        }
+
+        .cyber-button:hover {
+            box-shadow: 0 0 10px var(--neon-pink);
+            color: white;
+        }
+
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+
+        footer {
+            background-color: rgba(10, 10, 26, 0.9);
+            border-top: 2px solid var(--neon-purple);
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(to right,
+                    transparent,
+                    transparent 100px,
+                    rgba(157, 0, 255, 0.1) 100px,
+                    rgba(157, 0, 255, 0.1) 101px);
+            z-index: 0;
+        }
+
+        footer p {
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            z-index: 1;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="background-canvas"></canvas>
+
+    <header class="text-center">
+        <h1>WEB DEVELOPMENT INTERNS 2025</h1>
+    </header>
+
+    <main>
+        <div class="intern-cards">
+            <!-- Intern 1 -->
+            <div class="intern-card">
+                <div class="intern-header">
+                    <img src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png" alt="Ethan Rivera" class="intern-img">
+                </div>
+                <div class="intern-body">
+                    <h2 class="intern-name">ETHAN RIVERA</h2>
+                    <p class="intern-desc">
+                        Front-end specialist with expertise in responsive design and interactive UI components. Creates
+                        seamless user experiences through modern web technologies.
+                    </p>
+                    <div class="intern-skills">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Tailwind</span>
+                    </div>
+                    <div class="intern-links">
+                        <a href="#portfolio" class="cyber-button">PORTFOLIO</a>
+                        <a href="#cv" class="cyber-button">VIEW CV</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intern 2 -->
+            <div class="intern-card">
+                <div class="intern-header">
+                    <img src="https://img.freepik.com/premium-vector/young-gamer-girl-avatar-streaming-with-colored-hair-gaming-headset_704771-3431.jpg" alt="Sophie Chen" class="intern-img">
+                </div>
+                <div class="intern-body">
+                    <h2 class="intern-name">SOPHIE CHEN</h2>
+                    <p class="intern-desc">
+                        Full-stack developer with a focus on data visualization and backend architecture. Passionate
+                        about creating efficient, scalable web applications.
+                    </p>
+                    <div class="intern-skills">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">D3.js</span>
+                    </div>
+                    <div class="intern-links">
+                        <a href="#portfolio" class="cyber-button">PORTFOLIO</a>
+                        <a href="#cv" class="cyber-button">VIEW CV</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intern 3 -->
+            <div class="intern-card">
+                <div class="intern-header">
+                    <img src="https://thumbs.dreamstime.com/b/man-icon-gentleman-logo-man-beard-mustache-groom-businessman-vector-illustration-man-icon-gentleman-logo-man-124766901.jpg" alt="Malik Patel" class="intern-img">
+                </div>
+                <div class="intern-body">
+                    <h2 class="intern-name">MALIK PATEL</h2>
+                    <p class="intern-desc">
+                        UI/UX designer and developer specializing in accessible web design. Creates inclusive
+                        experiences while maintaining visual appeal and functionality.
+                    </p>
+                    <div class="intern-skills">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">SASS</span>
+                        <span class="skill-tag">jQuery</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">WordPress</span>
+                    </div>
+                    <div class="intern-links">
+                        <a href="#portfolio" class="cyber-button">PORTFOLIO</a>
+                        <a href="#cv" class="cyber-button">VIEW CV</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intern 4 -->
+            <div class="intern-card">
+                <div class="intern-header">
+                    <img src="https://img.freepik.com/premium-vector/young-gamer-girl-avatar-streaming-with-colored-hair-gaming-headset_704771-3515.jpg" alt="Zoe Nguyen" class="intern-img">
+                </div>
+                <div class="intern-body">
+                    <h2 class="intern-name">ZOE NGUYEN</h2>
+                    <p class="intern-desc">
+                        Mobile-first web developer with expertise in progressive web apps. Creates performant
+                        applications that work seamlessly across all devices.
+                    </p>
+                    <div class="intern-skills">
+                        <span class="skill-tag">PWA</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">Service Workers</span>
+                    </div>
+                    <div class="intern-links">
+                        <a href="#portfolio" class="cyber-button">PORTFOLIO</a>
+                        <a href="#cv" class="cyber-button">VIEW CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 CODEX HUB | ACCELERATING THE FUTURE OF WEB</p>
+    </footer>
+
+    <script>
+        // Random retro-futuristic background generator
+        function generateRetroFuturisticBackground() {
+            const canvas = document.getElementById('background-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Set canvas size to match window
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#0a0a2e');
+            gradient.addColorStop(1, '#1a0b35');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid pattern
+            const gridSpacing = 50;
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(157, 0, 255, 0.2)';
+
+            // Draw horizontal lines
+            for (let y = 0; y < canvas.height; y += gridSpacing) {
+                // Add slight perspective effect
+                const opacity = 0.2 - (y / canvas.height) * 0.15;
+                ctx.strokeStyle = `rgba(0, 243, 255, ${opacity})`;
+
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+
+            // Draw vertical lines
+            for (let x = 0; x < canvas.width; x += gridSpacing) {
+                ctx.strokeStyle = 'rgba(157, 0, 255, 0.1)';
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+
+            // Add random glowing particles
+            const particleCount = 150;
+
+            for (let i = 0; i < particleCount; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = Math.random() * 2 + 1;
+
+                // Choose random particle color
+                const colors = ['#00f3ff', '#9d00ff', '#ff00e6'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                ctx.beginPath();
+                const glow = ctx.createRadialGradient(x, y, 0, x, y, radius * 3);
+                glow.addColorStop(0, color);
+                glow.addColorStop(1, 'transparent');
+
+                ctx.fillStyle = glow;
+                ctx.arc(x, y, radius * 3, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.fillStyle = color;
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Add a few horizontal "scan lines"
+            ctx.globalAlpha = 0.05;
+            ctx.fillStyle = '#ffffff';
+
+            for (let i = 0; i < canvas.height; i += 4) {
+                ctx.fillRect(0, i, canvas.width, 1);
+            }
+
+            ctx.globalAlpha = 1.0;
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', generateRetroFuturisticBackground);
+
+        // Initial generation and periodic refresh
+        generateRetroFuturisticBackground();
+        setInterval(generateRetroFuturisticBackground, 5000); // Regenerate every 5 seconds
+    </script>
+</body>
+
+</html>
